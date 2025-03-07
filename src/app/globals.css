@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --bodoni-font: "Bodoni Moda", serif;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.font-bodoni {
+  font-family: var(--bodoni-font);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--my-font);
+}
+
+/* For modern browsers */
+html {
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in Chrome, Edge, Safari */
+}
