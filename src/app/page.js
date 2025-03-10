@@ -4,7 +4,7 @@ import Hero from "./components/Hero"
 import Products from "./components/Projects"
 import Services from "./components/AboutMe"
 import Tagline from "./components/Tagline"
-import Lenis from "@studio-freight/lenis"
+import Lenis from "lenis";
 import Footer from "./components/Footer"
 import CustomCursor from "./components/CustomCursor"
 
