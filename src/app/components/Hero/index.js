@@ -15,11 +15,13 @@ export default function Hero() {
         <div className="hidden lg:block z-10">
           <span className={`text-xl text-stone-800 uppercase`}>2025</span>
         </div>
+
         <h4
           className={`text-stone-800 text-xl lg:text-2xl font-bold uppercase z-10 lg:text-center`}
         >
           — Hello World
         </h4>
+
         <div className="flex gap-5 justify-between items-center lg:text-lg text-stone-800 font-bold uppercase z-10">
           <Underline
             text={
@@ -36,6 +38,7 @@ export default function Hero() {
               </a>
             }
           ></Underline>
+
           <Underline
             text={
               <a className="text-center cursor-pointer" href="#sayhello">
@@ -44,6 +47,7 @@ export default function Hero() {
             }
           ></Underline>
         </div>
+
         <div
           className="absolute top-0 w-screen h-[60vh]"
           style={{
@@ -57,8 +61,11 @@ export default function Hero() {
             className='w-full h-full bg-[url("/noise.png")] opacity-30 bg-repeat-round'
           ></div>
         </div>
+
         <Clouds />
+
         <Sun />
+
         <Mountains />
       </div>
 
@@ -84,25 +91,36 @@ export default function Hero() {
               )
             )}
           </h4>
+
+          <div className="font-bold uppercase pr-2 lg:h-auto -mt-9 text-lg">
+            <Typing text="Grateful for the Run | Learning, Evolving, Having Fun ❤" />
+          </div>
         </motion.div>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="w-[30vw] flex flex-col items-start absolute right-0 top-5 lg:top-[25vh] text-stone-900"
+          className="w-[42vw] flex flex-col items-start absolute right-0 top-5 lg:top-[28vh] text-stone-900"
         >
-          <div className="font-bold uppercase pr-2 h-44 lg:h-3">
-            <Typing text="Consistently learning and turning thing i love to do as a career" />
+          <div className="font-bold uppercase pr-2 h-44 lg:h-3 text-lg ">
+            <Typing text=" Turning Passion into Profession" />
           </div>
 
-          <h4 className="uppercase font-bold text-6xl hidden lg:text-[110px] leading-tight lg:flex ">
-            {"Developer".split("").map((t, index) => (
-              <Flip
-                key={index}
-                text1={t}
-                text2={t}
-                lineHeight={"h-[1] lg:h-[120px]"}
-              />
-            ))}
+          <h4 className="uppercase font-bold text-6xl hidden lg:text-[75px] leading-tight tracking-tight lg:flex">
+            {"full-stack developer".split("").map((t, index) =>
+              t === " " ? (
+                <span key={index} className="w-4 lg:w-6">
+                  {"\u00A0"}
+                </span> // Adds visible spacing
+              ) : (
+                <Flip
+                  key={index}
+                  text1={t}
+                  text2={t}
+                  lineHeight={"h-[1] lg:h-[100px]"} //
+                />
+              )
+            )}
           </h4>
         </motion.div>
       </div>

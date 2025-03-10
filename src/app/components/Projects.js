@@ -3,19 +3,20 @@ import { motion, useScroll, useTransform } from "framer-motion"
 
 const projects = [
   {
-    title: "Wanderlust",
+    title: "<u>Wanderlust</u> Full-Stack Airbnb-Like Website",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet ex eget urna tincidunt viverra. Nullam fringilla, libero eget venenatis vehicula, urna nunc gravida orci, a pharetra libero erat vel risus. Vivamus euismod tincidunt nibh, ac sodales urna venenatis a. Suspendisse potenti.",
+      "A feature-rich website that allows users to browse, list, and review vacation rentals seamlessly.\nKey Features :\n- User authentication & authorization\n- Interactive map for hotel locations\n- Review and rating system\n- Secure booking and listing system\n\nTech Stack:\n- MERN Stack (MongoDB, Express.js, React, Node.js)\n- Mapbox for location services\n- Cloudinary for image uploads\n- JWT & Bcrypt for authentication\n- Axios & Material-UI for frontend UI",
     img: "/bentofolio.png",
     websiteUrl: "https://tally.so/r/mBAaPY",
   },
   {
-    title: "Stalk Stock",
+    title: "<u>Stalk Stock</u> Full-Stack Zerodha-Like Website",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet ex eget urna tincidunt viverra. Nullam fringilla, libero eget venenatis vehicula, urna nunc gravida orci, a pharetra libero erat vel risus. Vivamus euismod tincidunt nibh, ac sodales urna venenatis a. Suspendisse potenti.",
+      "A stock market portfolio management platform on whic user can buy, sell, track stocks.\nKey Features :\n- Real-time stock price tracking\n- Portfolio management\n- Interactive financial charts\n- Secure login & authentication\n\nTech Stack:\n- MERN Stack (MongoDB, Express.js, React, Node.js)\n- Chart.js for data visualization\n- Firebase Authentication for security\n- Tailwind CSS for styling",
     img: "https://thecodedose.com/assets/confident-ritchie-123a6d.netlify_2.png",
     websiteUrl: "https://tally.so/r/mBAaPY",
   },
+
   {
     title: "Portfolio Template",
     description:
@@ -23,7 +24,7 @@ const projects = [
     img: "https://thecodedose.com/assets/confident-ritchie-123a6d.netlify_2.png",
     websiteUrl: "https://tally.so/r/mBAaPY",
   },
-]
+];
 
 const Card = ({
   i,
@@ -49,22 +50,22 @@ const Card = ({
     <div
       id="projects"
       ref={container}
-      className='w-screen h-screen pointer-events-none flex justify-center items-center sticky top-0'
+      className="w-screen h-screen pointer-events-none flex justify-center items-center sticky top-0"
     >
       <motion.div
-        className='relative h-2/3 w-full rounded-xl px-5'
+        className="relative h-2/3 w-full rounded-xl px-5"
         style={{
           scale,
           top: `calc(5vh + ${i * 30}px)`,
         }}
       >
-        <div className='-translate-y-20 lg:translate-y-0 lg:grid grid-cols-3 lg:h-full shadow-[0_0px_50px_-15px_#354340] rounded-xl'>
-          <div className='flex flex-col justify-between text-stone-900 bg-stone-100 rounded-t-xl lg:rounded-tr-none lg:rounded-l-xl h-full'>
-            <h2 className='px-10 py-5 lg:p-10 uppercase text-4xl font-bold lg:text-8xl'>
-              {title}
+        <div className="-translate-y-20 lg:translate-y-0 lg:grid grid-cols-3 lg:h-full shadow-[0_0px_50px_-15px_#354340] rounded-xl">
+          <div className="flex flex-col justify-between text-stone-900 bg-stone-100 rounded-t-xl lg:rounded-tr-none lg:rounded-l-xl h-full">
+            <h2 className="px-10 py-5 lg:p-10 uppercase text-4xl font-bold lg:text-7xl">
+              <p dangerouslySetInnerHTML={{ __html: title }} />
             </h2>
           </div>
-          <div className='h-64 lg:h-full w-full overflow-hidden'>
+          <div className="h-64 lg:h-full w-full overflow-hidden">
             <motion.div
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -72,16 +73,17 @@ const Card = ({
                 backgroundImage: `url(${img})`,
                 backgroundSize: "cover",
               }}
-              className='h-full'
+              className="h-full"
             ></motion.div>
           </div>
-          <div className='flex flex-col justify-between rounded-b-xl lg:rounded-r-xl bg-stone-100 text-stone-900 uppercase font-bold'>
-            <p className='p-10'>{description}</p>
-            <div className='w-full px-10 py-5 bg-stone-900 rounded-bl-xl lg:rounded-bl-none rounded-br-xl cursor-pointer relative'>
-              
+          <div className="flex flex-col justify-between rounded-b-xl lg:rounded-r-xl bg-stone-100 text-stone-900 uppercase font-bold">
+            <p className="p-7" style={{ whiteSpace: "pre-line" }}>
+              {description}
+            </p>
+            <div className="w-full px-10 py-5 bg-stone-900 rounded-bl-xl lg:rounded-bl-none rounded-br-xl cursor-pointer relative">
               <a
                 href={websiteUrl}
-                className='uppercase text-3xl text-stone-200 z-30 pointer-events-auto'
+                className="uppercase text-3xl text-stone-200 z-30 pointer-events-auto"
               >
                 Visit Live site
               </a>
@@ -90,7 +92,7 @@ const Card = ({
         </div>
       </motion.div>
     </div>
-  )
+  );
 }
 
 export default function Products() {

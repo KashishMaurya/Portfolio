@@ -28,21 +28,6 @@ export default function Footer() {
     ele.style.top = "100%";
   };
 
-  const phrases = [
-    ["Contact Me", "Stay Connected"],
-    ["Say Hello", "Let's Chat"],
-    ["Drop a Message", "I'm Online"],
-    ["Start a Conversation", "Let's Connect"],
-    ["Reach Me", "I'm Just a Click Away"],
-    ["Work Together?", "Let's Build!"],
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const changeText = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-  };
-
   return (
     <div
       id="sayhello"
@@ -81,10 +66,9 @@ export default function Footer() {
           }}
         ></div>
         <Flip
-          text1={phrases[currentIndex][0]}
-          text2={phrases[currentIndex][1]}
+          text1="Reach Me"
+          text2="I'm Just a Click Away"
           lineHeight={"h-5"}
-          onClick={changeText}
         />
       </motion.div>
 

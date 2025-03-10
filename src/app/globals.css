@@ -35,3 +35,11 @@ html {
 body::-webkit-scrollbar {
   display: none; /* Hides scrollbar in Chrome, Edge, Safari */
 }
+
+body {
+  overflow-x: hidden;
+}
+
+#products {
+  overflow: visible;
+}
