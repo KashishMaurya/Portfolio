@@ -7,13 +7,33 @@ import Sun from "./Sun";
 import Underline from "../Text/Underline";
 import Typing from "../Text/Typing";
 import Flip from "../Text/Flip";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [time, setTime] = useState("");
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+
+      const formatted = now.toLocaleString("en-IN", {
+        year: "numeric",
+        day: "2-digit",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      setTime(formatted);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="h-[150vh] w-screen relative">
       <div className="sticky top-0 grid grid-cols-2 lg:grid-cols-3 py-3 px-10">
         <div className="hidden lg:block z-10">
-          <span className={`text-xl text-stone-800 uppercase`}>2025</span>
+          <span className={`text-xl text-stone-800 uppercase`}>{time}</span>
         </div>
 
         <h4
@@ -88,7 +108,7 @@ export default function Hero() {
                   text2={t}
                   lineHeight={"h-[1] lg:h-[120px]"}
                 />
-              )
+              ),
             )}
           </h4>
 
@@ -106,7 +126,11 @@ export default function Hero() {
             <Typing text=" Turning Passion into Profession" />
           </div>
 
-          <h4 className="uppercase font-bold text-6xl hidden lg:text-[75px] leading-tight tracking-tight lg:flex">
+          <div className="font-bold uppercase pr-2 h-44 lg:h-3 text-5xl mt-3">
+            <Typing text=" ai/ml enthusiast" />
+          </div>
+
+          <h4 className="uppercase font-bold text-6xl hidden lg:text-[75px] leading-tight tracking-tight lg:flex mt-5">
             {"full-stack developer".split("").map((t, index) =>
               t === " " ? (
                 <span key={index} className="w-4 lg:w-6">
@@ -117,9 +141,9 @@ export default function Hero() {
                   key={index}
                   text1={t}
                   text2={t}
-                  lineHeight={"h-[1] lg:h-[100px]"} //
+                  lineHeight={" lg:h-[100px]"}
                 />
-              )
+              ),
             )}
           </h4>
         </motion.div>

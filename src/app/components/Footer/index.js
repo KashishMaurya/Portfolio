@@ -3,13 +3,7 @@ import ContactModal from "./ContactModal";
 import Mountains from "./Mountains";
 import { motion } from "framer-motion";
 import Flip from "../Text/Flip";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-  FaEnvelope,
-  FaArrowUp,
-} from "react-icons/fa";
+import { FaArrowUp } from "react-icons/fa";
 
 export default function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,10 +69,15 @@ export default function Footer() {
       {/* Contact Modal */}
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
 
-      {/* Background */}
+      {/* Footer Credit */}
+      <p className="absolute bottom-6 text-stone-600 text-sm z-10 uppercase tracking-widest">
+        © 2026 Kashish Maurya — Mumbai, India
+      </p>
+
+      {/* Background Mountains */}
       <Mountains />
 
-      {/* Back to Top Button */}
+      {/* Back to Top */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="fixed bottom-5 right-5 bg-gray-800 hover:bg-gray-600 text-white p-3 rounded-full shadow-lg transition-all"

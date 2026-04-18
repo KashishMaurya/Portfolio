@@ -1,121 +1,117 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import SolarSystem from "./SolarSystem";
-import {
-  FaReact,
-  FaNodeJs,
-  FaDatabase, //sql
-  FaHtml5,
-  FaCss3Alt,
-  FaBootstrap,
-  FaFigma,
-  FaJava,
-  FaC,
-} from "react-icons/fa6";
-import {
-  SiMongodb,
-  SiExpress,
-  SiTailwindcss,
-  SiFramer,
-  SiCplusplus,
-  SiPython,
-  SiJavascript,
-  SiElectron,
-  SiMysql,
-} from "react-icons/si";
-import { TbBrandCSharp, TbApi } from "react-icons/tb";
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const EXPERIENCE = [
+  {
+    role: "Website Developer",
+    company: "BuzzTactics (Marketing Agency)",
+    duration: "Jan 2026 - March 2026",
+    location: "Mumbai",
+    points: [
+      "Built a fully responsive production website using React + Tailwind CSS with reusable component architecture.",
+      "Implemented dynamic rendering and efficient state management for smooth user experience.",
+      "Improved performance via lazy loading, code splitting, and asset optimization.",
+      "Applied budget-aware engineering — used EmailJS for contact forms and CDN-based static assets for cost-efficient deployment.",
+      "Ensured accessibility, cross-browser compatibility, and clean Git workflows throughout.",
+    ],
+  },
+];
 
 const EDUCATION = [
   {
-    title:
-      "Bachelor of Computer Applications  (Specialization: Cyber Security)",
+    title: "Bachelor of Computer Applications (BCA)",
     institution: "Amity University",
-    duration: "2022 - Present",
+    duration: "2023 - 2026",
     description:
-      "Currently pursuing my BCA, focusing on full-stack development, AI, and database management. Completed CS50x and more certification courses along with building various projects.",
+      "Pursuing BCA with a CGPA of 8.4, expected graduation July 2026. Focused on full-stack development, AI/ML, and database management. Completed CS50x (Harvard), TCS iON RIO-125 (AI/ML), Oracle AI Foundations Associate, and GFG160 DSA Challenge.",
   },
   {
-    title: "High School (12th Grade)",
+    title: "High School — HSC (12th Grade)",
     institution: "Thakur College of Science and Commerce",
     duration: "2020 - 2022",
     description:
-      "Completed high school with a major in PCM with Computer Science, where I gained in-depth knowledge of C++ and programming logic. I also explored the Intel 8085 microprocessor, understanding low-level computing concepts. Alongside academics, I deepened my web development skills by taking a MERN web-development online course.",
+      "Completed HSC under Maharashtra State Board with 72%. Majored in PCM with Computer Science, gaining strong fundamentals in C++ and low-level computing (Intel 8085 microprocessor). Simultaneously pursued a MERN stack web development course online.",
   },
   {
-    title: "Secondary School (till 10th Grade)",
+    title: "Secondary School — SSC (10th Grade)",
     institution: "Sardar Vallabhbhai Patel Vidyalaya",
     duration: "2018 - 2020",
     description:
-      "Discovered my passion for Computer Science and Coding, which shaped my career path. I created my first HTML & CSS webpage, sparking my interest in web development. Had the opportunities to develop leadership, communication, and teamwork abilities.",
+      "Discovered my passion for Computer Science here. Built my first HTML & CSS webpage, which sparked everything. Also developed leadership, communication, and teamwork skills through school activities.",
   },
 ];
 
-const techStack = [
+const SKILL_GROUPS = [
   {
-    name: "HTML5",
-    icon: <FaHtml5 />,
-    url: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5",
+    title: "Languages",
+    items: ["JavaScript", "TypeScript", "Python", "Java", "C++", "C", "SQL"],
   },
   {
-    name: "CSS3",
-    icon: <FaCss3Alt />,
-    url: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    title: "Frontend",
+    items: [
+      "React.js",
+      "Next.js",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Framer Motion",
+    ],
   },
   {
-    name: "JavaScript",
-    icon: <SiJavascript />,
-    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-  },
-  { name: "React", icon: <FaReact />, url: "https://react.dev/" },
-  { name: "Node.js", icon: <FaNodeJs />, url: "https://nodejs.org/" },
-  { name: "MongoDB", icon: <SiMongodb />, url: "https://www.mongodb.com/" },
-  { name: "Express.js", icon: <SiExpress />, url: "https://expressjs.com/" },
-  {
-    name: "SQL",
-    icon: <FaDatabase />,
-    url: "https://developer.mozilla.org/en-US/docs/Glossary/SQL",
-  },
-  { name: "MySQL", icon: <SiMysql />, url: "https://www.mysql.com/" },
-  {
-    name: "Bootstrap",
-    icon: <FaBootstrap />,
-    url: "https://getbootstrap.com/",
+    title: "Backend",
+    items: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "PostgreSQL",
+      "MySQL",
+      "Redis",
+      "REST APIs",
+    ],
   },
   {
-    name: "Tailwind CSS",
-    icon: <SiTailwindcss />,
-    url: "https://tailwindcss.com/",
+    title: "AI / ML",
+    items: [
+      "NLP",
+      "BERT",
+      "HuggingFace",
+      "Data Preprocessing",
+      "Feature Engineering",
+      "Model Evaluation (F1, Precision, Recall)",
+    ],
   },
   {
-    name: "Framer Motion",
-    icon: <SiFramer />,
-    url: "https://www.framer.com/motion/",
-  },
-  { name: "Figma", icon: <FaFigma />, url: "https://www.figma.com/" },
-  {
-    name: "C",
-    icon: <FaC />,
-    url: "https://en.wikipedia.org/wiki/C_(programming_language)",
-  },
-  { name: "C++", icon: <SiCplusplus />, url: "https://isocpp.org/" },
-  { name: "Python", icon: <SiPython />, url: "https://www.python.org/" },
-  { name: "Java", icon: <FaJava />, url: "https://www.java.com/" },
-  {
-    name: "C#",
-    icon: <TbBrandCSharp />,
-    url: "https://learn.microsoft.com/en-us/dotnet/csharp/",
+    title: "Core CS",
+    items: [
+      "DSA",
+      "OOP",
+      "DBMS",
+      "Operating Systems",
+      "Computer Networks",
+      "System Design",
+      "SDLC",
+    ],
   },
   {
-    name: "Electron",
-    icon: <SiElectron />,
-    url: "https://www.electronjs.org/",
-  },
-  {
-    name: "RESTful APIs",
-    icon: <TbApi />,
-    url: "https://hoppscotch.io/",
+    title: "Tools & Workflow",
+    items: [
+      "Git",
+      "GitHub",
+      "Figma",
+      "Docker",
+      "EmailJS",
+      "CDN Optimization",
+      "Lazy Loading",
+      "Code Splitting",
+    ],
   },
 ];
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export default function EducationTimeline() {
   const containerRef = useRef(null);
@@ -127,82 +123,146 @@ export default function EducationTimeline() {
   const opacityTransform = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    [0.2, 1, 0.2]
+    [0.2, 1, 0.2],
   );
   const xTransform = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    ["-100px", "0px", "100px"]
+    ["-100px", "0px", "100px"],
   );
 
   return (
     <div
       id="aboutme"
       ref={containerRef}
-      className="bg-[#000b1e] w-screen relative py-20 text-white"
+      className="bg-[#000b1e] w-screen relative py-24 text-white"
     >
       <SolarSystem />
 
-      {/* About Me Section */}
-      <div className="px-5 lg:px-20 py-5 lg:py-1 text-center">
+      {/* ── About Me ── */}
+      <div className="px-5 lg:px-24 py-5 lg:py-1 text-center">
         <h2 className="uppercase text-4xl lg:text-8xl font-bold">About ME</h2>
-        <p className="lg:w-3/4 mx-auto text-lg text-stone-300 mt-5">
-          Crafting with Precision; Innovating with Passion. Hey, I’m Kashish! A
-          detail-obsessed developer who thrives on structure, design, and
-          problem-solving — with a slight addiction to clean UI, smooth UX, and
-          writing code that actually makes sense. My journey in tech is fueled
-          by endless curiosity, constant learning, and pushing boundaries. Every
-          project is an adventure — sometimes it’s about building intuitive web
-          applications, sometimes it’s about debugging until 3 AM, but always,
-          it’s about iterating, optimizing, and elevating. I believe in blending
-          creativity with efficiency, where every bug is just a feature waiting
-          to be tamed. Consistency is my strength, and growth is my goal. I
-          don’t just build; I refine, perfect, and evolve. Let’s create
-          something awesome—one line of code at a time. 🚀
+        <p className="lg:w-3/4 mx-auto text-xl lg:text-2xl text-stone-300 mt-8 leading-relaxed ">
+          Hey, I'm <span className="text-white font-semibold">Kashish</span> — a
+          full-stack developer and AI/ML enthusiast based in Mumbai who
+          genuinely enjoys the grind. I've built everything from QR-based
+          identity systems and NLP pipelines powered by BERT, to real-time video
+          apps, Airbnb clones, and stock dashboards — and every project has
+          taught me something new (sometimes at 3 AM). My stack is MERN
+          through and through, but I'm equally comfortable diving into Python
+          for AI/ML work or squeezing out performance gains with lazy loading
+          and code splitting. I've solved 300+ LeetCode problems not because I
+          had to, but because problem-solving is genuinely fun to me. Currently
+          finishing my BCA at Amity University with an 8.4 CGPA, certified by
+          Harvard (CS50x), TCS, and Oracle — and ready to build things that
+          actually matter. Clean code. Sharp UI. Real impact. Let's go!
         </p>
 
-        {/* Technologies Section */}
-        <h3 className="uppercase text-3xl lg:text-5xl font-bold mt-16">
-          Technologies I Work With
+        {/* ── Skills Grid ── */}
+        <h3 className="uppercase text-3xl lg:text-6xl font-bold mt-24 mb-2">
+          Skills & Expertise
         </h3>
-        <div className="flex flex-wrap justify-center gap-6 mt-10">
-          {techStack.map((tech, index) => (
-            <a
-              key={index}
-              href={tech.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-5xl text-gray-400 hover:text-white transition-transform transform hover:scale-110"
+        <p className="text-stone-500 uppercase tracking-widest text-sm lg:text-base mb-12">
+          What I bring to the table
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4 lg:w-5/6 mx-auto text-left">
+          {SKILL_GROUPS.map(({ title, items }) => (
+            <div
+              key={title}
+              className="bg-[#111d32] rounded-2xl p-8 shadow-xl border border-stone-700 hover:border-stone-500 transition-colors duration-200"
             >
-              {tech.icon}
-            </a>
+              <h4 className="text-white font-bold uppercase text-base tracking-widest mb-5 border-b border-stone-600 pb-3">
+                {title}
+              </h4>
+              <ul className="flex flex-wrap gap-3">
+                {items.map((item) => (
+                  <li
+                    key={item}
+                    className="bg-[#1c2e4a] text-stone-200 text-lg font-medium px-4 py-2 rounded-full"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* Education Timeline Section */}
-      <h2 className="text-4xl lg:text-6xl font-bold text-center mt-20 uppercase">
+      {/* ── Experience ── */}
+      <h2 className="text-4xl lg:text-6xl font-bold text-center mt-32 mb-2 uppercase">
+        Experience
+      </h2>
+      <p className="text-stone-500 uppercase tracking-widest text-sm lg:text-base text-center mb-12">
+        Where I've shipped real work
+      </p>
+      <div className="relative w-full flex flex-col items-center px-5 lg:px-0">
+        {EXPERIENCE.map(
+          ({ role, company, duration, location, points }, index) => (
+            <motion.div
+              key={index}
+              className="w-full max-w-5xl mb-12"
+              style={{ opacity: opacityTransform }}
+            >
+              <div className="bg-[#111d32] text-white p-8 lg:p-12 rounded-2xl shadow-xl border border-stone-700">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 mb-8">
+                  <div>
+                    <h3 className="text-3xl lg:text-4xl font-bold">{role}</h3>
+                    <p className="text-xl text-stone-300 mt-1">{company}</p>
+                  </div>
+                  <div className="lg:text-right shrink-0">
+                    <p className="text-base text-stone-400 italic">
+                      {duration}
+                    </p>
+                    <p className="text-base text-stone-500 mt-1">{location}</p>
+                  </div>
+                </div>
+                <ul className="space-y-4 text-stone-300 text-lg">
+                  {points.map((point, i) => (
+                    <li key={i} className="flex gap-3 items-start">
+                      <span className="mt-2 shrink-0 w-2 h-2 rounded-full bg-stone-400 inline-block"></span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ),
+        )}
+      </div>
+
+      {/* ── Education ── */}
+      <h2 className="text-4xl lg:text-6xl font-bold text-center mt-24 mb-2 uppercase">
         My Education Journey
       </h2>
-      <div className="relative w-full flex flex-col items-center mt-10">
-        <div className="absolute w-1 bg-stone-500 h-full left-1/2 transform -translate-x-1/2"></div>
+      <p className="text-stone-500 uppercase tracking-widest text-sm lg:text-base text-center mb-12">
+        The road that got me here
+      </p>
+      <div className="relative w-full flex flex-col items-center mt-4">
+        <div className="absolute w-1 bg-stone-600 h-full left-1/2 transform -translate-x-1/2"></div>
         {EDUCATION.map(
           ({ title, institution, duration, description }, index) => (
             <motion.div
               key={index}
-              className={`flex w-full max-w-4xl mb-10 relative ${
+              className={`flex w-full max-w-5xl mb-12 relative ${
                 index % 2 === 0 ? "justify-start" : "justify-end"
               }`}
               style={{ opacity: opacityTransform, x: xTransform }}
             >
-              <div className="bg-[#111d32] text-white p-5 lg:p-8 rounded-xl w-[80%] shadow-lg">
-                <h3 className="text-2xl lg:text-3xl font-bold">{title}</h3>
-                <p className="text-lg text-stone-300">{institution}</p>
-                <p className="text-sm text-stone-400 italic">{duration}</p>
-                <p className="mt-3">{description}</p>
+              <div className="bg-[#111d32] text-white p-8 lg:p-10 rounded-2xl w-[82%] shadow-xl border border-stone-700">
+                <h3 className="text-2xl lg:text-3xl font-bold leading-snug">
+                  {title}
+                </h3>
+                <p className="text-xl text-stone-300 mt-2">{institution}</p>
+                <p className="text-base text-stone-500 italic mt-1">
+                  {duration}
+                </p>
+                <p className="mt-5 text-lg text-stone-300 leading-relaxed">
+                  {description}
+                </p>
               </div>
             </motion.div>
-          )
+          ),
         )}
       </div>
     </div>
