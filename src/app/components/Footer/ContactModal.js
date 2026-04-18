@@ -111,7 +111,7 @@ export default function ContactModal({ isOpen, onClose }) {
             rel="noopener noreferrer"
             className="underline underline-offset-2 hover:text-gray-800 transition-colors duration-200"
           >
-            portfolio-kashish-fawn.vercel.app
+            portfolio-kashish-omega.vercel.app
           </a>
         </p>
 
